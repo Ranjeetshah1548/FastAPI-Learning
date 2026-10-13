@@ -20,3 +20,35 @@ def get_student():
     return students
     
 
+from fastapi import Request
+
+# Path Parameters
+@app.get("/students/{student_id}")
+def student_info(student_id: int):
+    # If student exists, return the student; otherwise return error
+    for s in students:
+        if s.get("id") == student_id:
+            return s
+
+    return {
+        "error": "Student Id not found.."
+    }
+
+
+# Query Parameters
+@app.get("/greet")
+def greet_user(name: str, age: int):
+    return {
+        "greet": f"Hello {name}, Your age is {age}"
+    }
+
+
+# Multiple Query Parameters
+@app.get("/greets")
+def user_greet(request: Request):
+    query_param = dict(request.query_params)
+
+    return {
+        "Greet": f"Hello {query_param.get('name')}, Your age is {query_param.get('age')}"
+    }
+
