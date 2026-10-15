@@ -1,6 +1,7 @@
 from fastapi import FastAPI,Request
 from data import students
 
+ 
 app = FastAPI()
 ## multi route 
 @app.get("/")
@@ -20,7 +21,7 @@ def get_student():
     return students
     
 
-from fastapi import Request
+
 
 # Path Parameters
 @app.get("/students/{student_id}")
@@ -51,4 +52,52 @@ def user_greet(request: Request):
     return {
         "Greet": f"Hello {query_param.get('name')}, Your age is {query_param.get('age')}"
     }
+
+## Deferent types of HTTS Methos
+
+## import pydentic bashmodel
+from pydantic import BaseModel
+class studentDTO(BaseModel):
+    id:int
+    name:str
+    Class:str
+
+## Create a Post Routes
+@app.post("/create_student")
+def create_student(create_student:studentDTO):
+    create_student = create_student.model_dump()
+    students.append(create_student)
+
+    return{"status":"Student Created Successfully..","Students":students}
+
+
+## Create a Put Routes
+@app.put("/update_student/{id}")
+def update_student(update_student:studentDTO, id:int):
+
+    for index, onestudent in enumerate(students):
+        if onestudent.get("id") == id:
+            print(index,onestudent)
+            students[index] = update_student.model_dump()
+            return{"status":"Student Updated Successfully..","Student":update_student}
+
+
+    return {
+            "error": "Student Id not found.."
+        }
+
+
+## create a delete Routes
+@app.delete("/delete_student/{id}")
+def delete_student(id:int):
+
+    for index, onestudent in enumerate(students):
+        if onestudent.get("id") == id:
+            delete_student = students.pop(index)
+
+            return{"status":"Student Deleted Successfully..","Student":delete_student}
+
+    return {
+                "error": "Student Id not found.."
+            }
 
