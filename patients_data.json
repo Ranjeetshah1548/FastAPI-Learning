@@ -101,12 +101,12 @@
   },
   "P011": {
     "name": "Ranjeet",
-    "city": "Phagwara",
+    "city": "Jalandhar",
     "age": 20,
     "gender": "male",
-    "height": 1.7,
+    "height": 1.6,
     "weight": 60.5,
-    "bmi": 20.93,
+    "bmi": 23.63,
     "verdict": "Normal"
   }
 }
