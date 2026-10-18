@@ -98,15 +98,5 @@
     "weight": 80,
     "bmi": 25.25,
     "verdict": "Overweight"
-  },
-  "P011": {
-    "name": "Ranjeet",
-    "city": "Jalandhar",
-    "age": 20,
-    "gender": "male",
-    "height": 1.6,
-    "weight": 60.5,
-    "bmi": 23.63,
-    "verdict": "Normal"
   }
 }
