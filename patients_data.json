@@ -1,4 +1,3 @@
-
 {
   "P001": {
     "name": "Ananya Sharma",
@@ -67,7 +66,7 @@
     "gender": "female",
     "height": 1.62,
     "weight": 58,
-    "bmi": 22.10,
+    "bmi": 22.1,
     "verdict": "Normal"
   },
   "P008": {
@@ -75,7 +74,7 @@
     "city": "Jaipur",
     "age": 45,
     "gender": "male",
-    "height": 1.70,
+    "height": 1.7,
     "weight": 105,
     "bmi": 36.33,
     "verdict": "Obese"
@@ -99,5 +98,15 @@
     "weight": 80,
     "bmi": 25.25,
     "verdict": "Overweight"
+  },
+  "P011": {
+    "name": "Ranjeet",
+    "city": "Phagwara",
+    "age": 20,
+    "gender": "male",
+    "height": 1.7,
+    "weight": 60.5,
+    "bmi": 20.93,
+    "verdict": "Normal"
   }
 }
