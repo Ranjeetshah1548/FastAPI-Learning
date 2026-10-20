@@ -31,3 +31,43 @@ def get_one_task(task_id:int, db:Session):
         raise HTTPException(status_code=404, detail='Task it not found!!')
 
     return {"ststus": "Task Fatched Successfully...","data":one_task}
+
+## controller for update task.
+def update_task(body:TaskSchema ,task_id:int, db:Session):
+
+    one_task = db.query(TaskModel).get(task_id)
+    
+    if not one_task:
+        raise HTTPException(status_code=404, detail='Task it not found!!')
+    
+#  -> for all fields
+#   one_task.title = body.title
+#   one_task.description = body.description
+#   one_task.is_completed = body.is_completed
+
+# -> for only selective  field
+    body = body.model_dump()
+    for field, value in body.items():
+        setattr(one_task, field, value)
+
+    db.add(one_task)
+    db.commit()
+    db.refresh(one_task)
+
+    return {"ststus": "Task Updated Successfully...","data":one_task}
+                
+
+## controller for delete task.
+def delete_task(task_id:int, db:Session):
+    one_task = db.query(TaskModel).get(task_id)
+
+    if not one_task:
+            raise HTTPException(status_code=404, detail='Task it not found!!')
+
+    db.delete(one_task)
+    db.commit()
+
+
+    return {"ststus": "Task Deleted Successfully..."}
+
+
